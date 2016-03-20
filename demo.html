@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title></title>
+  <!-- <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" >
+    $(function(){
+      $('input').keydown(function(event){
+        if(event.keyCode!=8 && (event.keyCode<48 || event.keyCode>57)){
+          return false;
+        }
+      });
+
+      $('#myform').submit(function(){
+
+
+      });
+
+    /*  $('#create').click(function(){
+
+        var markArr = $('input[name=mark]');
+        alert(markArr.length());
+        var num = $('#num').val();
+        var range = $('#range').val();
+        if(num == ''){
+          alert('请填写题目数量！');
+          return false;
+        }
+        if(range == ''){
+          alert('请填写出题范围！');
+          return false;
+        }
+        $("#createDiv").css('display','none');
+        for(var i=0;i<num;i++){
+          var mark = Math.floor(Math.random()*2);
+          var valueA = Math.floor(Math.random()*range);
+          if(mark==0){
+            mark='+';
+            var valueB = Math.floor(Math.random()*range);
+          }else{
+            mark='-';
+            var valueB = Math.floor(Math.random()*parseInt(valueA));
+
+          }
+
+
+
+
+          var html = "<div class='question'><span class='span'>"+(i+1)+".</span><span class='span1'>"+valueA+"</span><span class='span2'>"+mark+"</span><span class='span3'>"+valueB+"</span><span class='span4'>=</span><input type='text' class='input'></div>";
+          $('#div').append(html);
+        }
+        $('input').keydown(function(event){
+          if(event.keyCode!=8 && (event.keyCode<48 || event.keyCode>57)){
+            return false;
+          }
+        });
+        $('#submit').css('display','block');
+      });
+
+      $('#submit').click(function(){
+        var yes = 0; 
+        var no = 0;
+        $(this).css('display','none');
+        $('.question').each(function(){
+          $(this).find('input').attr('disabled',true);
+          var valueA = $(this).find('.span1').html();
+          var mark = $(this).find('.span2').html();
+          var valueB = $(this).find('.span3').html();
+          var res = $(this).find('input').val();
+
+          var rightRes=0; //输入结果
+          if(res == ''){
+            no++;
+            $(this).append('<span class="res2">✘</span>');
+          }else{
+            if(mark == '+'){
+              rightRes = parseInt(valueA)+parseInt(valueB);
+            }else{
+              rightRes = parseInt(valueA)-parseInt(valueB);
+            }
+            if(res == rightRes){
+              yes++;
+              $(this).append('<span class="res1">✔</span>');
+            }else{
+              no++;
+              $(this).append('<span class="res2">✘</span>');
+            }
+          }
+        });
+        alert('正确'+yes+'道题，错误'+no+'道题。');
+        $('#div').append('正确'+yes+'道题，错误'+no+'道题。');
+      });*/
+    });
+  </script>
+  <style type="text/css">
+  
+  .span{
+    margin:0 10px;
+    width:50px;
+    display:inline-block;
+    text-align: center;
+  }
+  .span1,.span3{
+    margin:0 5px;width:50px;
+    display:inline-block;text-align: center;
+  }
+  .span2,.span4{
+    margin:0 5px;width:20px;
+    display:inline-block;text-align: center;
+  }
+  .question{
+    width:500px;
+    height:30px;
+    margin:2px;
+  }
+  .question input{
+    margin:0 5px;text-align: center;width:100px;
+  }
+  #submit{
+    display:none;
+  }
+  #div1{
+    width:500px;
+    border:0px solid #000;
+    margin:0 auto;
+  }
+  .res1{
+    color:#56D003;
+  }
+  .res2{
+    color:#F10100;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="div1">
+    <div id="div">
+    </div>
+    <button id="submit">提交</button>
+    <div id="createDiv">
+    <form id="myform">
+      <table width="500px">
+        <tr>
+          <td>题目数量：</td>
+          <td><input type="text" id="num" class="input"></td>
+        </tr>
+        <tr>
+          <td>数值范围：</td>
+          <td><input type="text" id="range" class="input"></td>
+        </tr>
+        <tr>
+          <td>选择运算符：</td>
+          <td>
+            <label>
+              <input type="checkbox" name="mark" class="input">加&nbsp;
+            </label>
+            <label>
+              <input type="checkbox" name="mark" class="input">减&nbsp;
+            </label>
+            <label>
+              <input type="checkbox" name="mark" class="input">乘&nbsp;
+            </label>
+            <label>
+              <input type="checkbox" name="mark" class="input">除&nbsp;
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>减法结果是否可为负：</td>
+          <td>
+            <label>
+              <input type="radio" name="fu" id="range" class="input" checked="">可以为负&nbsp;
+            </label>
+            <label>
+              <input type="radio" name="fu" id="range" class="input">不能为负&nbsp;
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>除法结果：</td>
+          <td>
+
+          </td>
+        </tr>
+
+      </table>
+      <input id="create" type="submit" value="出题"/> 
+    </form>
+      
+    </div>
+  </div>
+</body>
+</html>
